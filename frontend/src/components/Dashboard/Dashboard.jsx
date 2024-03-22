@@ -3,12 +3,12 @@ import { InnerLayout } from "../../styles/Layout";
 
 const Dashboard = () => {
   return (
-    <dashStyled>
+    <DashStyled>
       <InnerLayout></InnerLayout>
-    </dashStyled>
+    </DashStyled>
   );
 };
 
-const dashStyled = styled.div``;
+const DashStyled = styled.div``;
 
 export default Dashboard;

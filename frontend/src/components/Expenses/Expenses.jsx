@@ -3,12 +3,12 @@ import { InnerLayout } from "../../styles/Layout";
 
 const Expenses = () => {
   return (
-    <expensesStyled>
+    <ExpensesStyled>
       <InnerLayout></InnerLayout>
-    </expensesStyled>
+    </ExpensesStyled>
   );
 };
 
-const expensesStyled = styled.div``;
+const ExpensesStyled = styled.div``;
 
 export default Expenses;
