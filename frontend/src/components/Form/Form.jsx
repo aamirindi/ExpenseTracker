@@ -2,10 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useGlobalContext } from "../../context/globalContext";
+import { myAxios } from "../../service/Helper";
 
 const Form = () => {
-  const { addIncome } = useGlobalContext();
   const [inputState, setInputState] = useState({
     title: "",
     amount: "",
@@ -20,9 +19,25 @@ const Form = () => {
     setInputState({ ...inputState, [name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addIncome(inputState);
+
+    try {
+      const response = await myAxios.post("/add-income", inputState);
+      if (response.status === 200) {
+        alert("Income Added Successfully");
+        setInputState({
+          title: "",
+          amount: "",
+          date: "",
+          category: "",
+          description: "",
+        });
+      }
+    } catch (error) {
+      alert("Failed to add income. Please try again.");
+      console.error("There was an error adding the income!", error);
+    }
   };
 
   return (
@@ -84,6 +99,13 @@ const Form = () => {
   );
 };
 
-const FormStyled = styled.div``;
+const FormStyled = styled.form`
+  .input-control {
+    margin-bottom: 10px;
+  }
+  .submit-btn {
+    margin-top: 10px;
+  }
+`;
 
 export default Form;

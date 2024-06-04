@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import { InnerLayout } from "../../styles/Layout";
-import { useGlobalContext } from "../../context/globalContext";
 import Form from "../Form/Form";
 
 const Income = () => {
-  const { addIncome } = useGlobalContext();
   return (
     <IncomeStyled>
       <InnerLayout>
